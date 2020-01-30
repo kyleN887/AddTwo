@@ -10,12 +10,18 @@ public class Solution {
 	
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		int arg3; 
-		ListNode current, head, toDO; 
+		ListNode current, head, toDo; 
 		
 		head = new ListNode(0); 
 		current = head; 
 		
 		while (current != null) {
+			toDo = new ListNode(l1.val + l2.val); 
+			current.next = toDo; 
+			current = toDo; 
+			l1 = l1.next; 
+			l2 = l2.next; 
+			
 			
 			
 		}
