@@ -12,35 +12,20 @@ public class Solution {
 		int arg3; 
 		ListNode current, head, toDO; 
 		
-		arg3 = adder(l1) + adder(l2); 
-		head = new ListNode(arg3 % 10); 
+		head = new ListNode(0); 
 		current = head; 
-		arg3 = arg3/10; 
 		
-		while(arg3 > 0) {
-			toDO = new ListNode(arg3 % 10); 
-			current.next = toDO; 
-			current = toDO; 
-			arg3 = arg3/10; 
+		while (current != null) {
+			
 			
 		}
-		
 		return head; 
 	}
-	public static int adder(ListNode node) {
-		int num, factor;
-		
-		for(factor = 1, num = 0; node != null; node = node.next, factor = factor*10) {
-			num = num + (node.val*factor); 
-			
-		}
+	
 
+	
 		
-		
-		
-		
-		return num; 
-	}
+	
 	
 	public static void main (String[] args) {
 		ListNode dope = new ListNode(2); 
