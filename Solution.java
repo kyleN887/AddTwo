@@ -25,8 +25,10 @@ public class Solution {
 				break; 
 			}
 			arg3 = l1.val + l2.val;
-			if (carryOver)
-				arg3++; 
+			if (carryOver) {
+				arg3++;
+				carryOver = false; 
+			}
 			if(arg3 > 9){
 				carryOver = true; 
 				arg3 -= 10; 
