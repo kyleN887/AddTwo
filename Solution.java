@@ -11,12 +11,22 @@ public class Solution {
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		int arg3; 
 		ListNode current, head, toDo; 
+		boolean carryOver; 
 		
+		carryOver = false; 
 		head = new ListNode(0); 
 		current = head; 
 		
-		while (current != null) {
-			toDo = new ListNode(l1.val + l2.val); 
+		while (l1 != null || l2 != null) {
+			
+			arg3 = l1.val + l2.val;
+			if (carryOver)
+				arg3++; 
+			if(arg3 > 9){
+				carryOver = true; 
+				arg3 -= 10; 
+			}
+			toDo = new ListNode(arg3); 
 			current.next = toDo; 
 			current = toDo; 
 			l1 = l1.next; 
@@ -25,7 +35,7 @@ public class Solution {
 			
 			
 		}
-		return head; 
+		return head.next; 
 	}
 	
 
@@ -51,7 +61,6 @@ public class Solution {
 		
 		Solution mine = new Solution("Kyle"); 
 		ListNode answer = mine.addTwoNumbers(dope, kyle); 
-		System.out.println("Lets see igf this change shows");
 				
 		  while(answer != null) {
 			System.out.println(answer.val); 
