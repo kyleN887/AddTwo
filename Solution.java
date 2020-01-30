@@ -10,37 +10,38 @@ public class Solution {
 	
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		int arg3; 
-		ListNode current, head, toDO; 
+		ListNode current, head, toDo; 
+		boolean carryOver; 
 		
-		arg3 = adder(l1) + adder(l2); 
-		head = new ListNode(arg3 % 10); 
+		carryOver = false; 
+		head = new ListNode(0); 
 		current = head; 
-		arg3 = arg3/10; 
 		
-		while(arg3 > 0) {
-			toDO = new ListNode(arg3 % 10); 
-			current.next = toDO; 
-			current = toDO; 
-			arg3 = arg3/10; 
+		while (l1 != null || l2 != null) {
+			
+			arg3 = l1.val + l2.val;
+			if (carryOver)
+				arg3++; 
+			if(arg3 > 9){
+				carryOver = true; 
+				arg3 -= 10; 
+			}
+			toDo = new ListNode(arg3); 
+			current.next = toDo; 
+			current = toDo; 
+			l1 = l1.next; 
+			l2 = l2.next; 
+			
+			
 			
 		}
-		
-		return head; 
+		return head.next; 
 	}
-	public static int adder(ListNode node) {
-		int num, factor;
-		
-		for(factor = 1, num = 0; node != null; node = node.next, factor = factor*10) {
-			num = num + (node.val*factor); 
-			
-		}
+	
 
+	
 		
-		
-		
-		
-		return num; 
-	}
+	
 	
 	public static void main (String[] args) {
 		ListNode dope = new ListNode(2); 
@@ -60,7 +61,6 @@ public class Solution {
 		
 		Solution mine = new Solution("Kyle"); 
 		ListNode answer = mine.addTwoNumbers(dope, kyle); 
-		System.out.println("Lets see igf this change shows");
 				
 		  while(answer != null) {
 			System.out.println(answer.val); 
