@@ -60,7 +60,7 @@ public class Solution {
 		
 		Solution mine = new Solution("Kyle"); 
 		ListNode answer = mine.addTwoNumbers(dope, kyle); 
-		System.out.println("damn hit another change");
+		System.out.println("Lets see igf this change shows");
 				
 		  while(answer != null) {
 			System.out.println(answer.val); 
