@@ -11,18 +11,23 @@ public class Solution {
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		int arg3; 
 		ListNode current, head, toDo; 
-		boolean carryOver; 
 		
 		head = new ListNode(0); 
 		current = head; 
 		
 		while (l1 != null || l2 != null) {
-			arg3 = 0; 
 			
-			if(l1 != null)
-				arg3 += l1.val;
-			if(l2 != null)
-				arg3 += l2.val; 
+			if(l1 == null) {
+				copyMachine(l2, current); 
+				break; 
+			}
+			
+			if(l2 == null) {
+				copyMachine(l1, current); 
+				break; 
+			}
+			
+			arg3 = l1.val + l2.val; 
 			
 			toDo = new ListNode(arg3 % 10); 
 			current.next = toDo; 
@@ -45,6 +50,24 @@ public class Solution {
 			
 		}
 		return head.next; 
+	}
+	public void copyMachine(ListNode node, ListNode current) {
+		ListNode toDo; 
+		
+		while (node != null) {
+			toDo = new ListNode(node.val %10 ); 
+			current.next = toDo; 
+			current = toDo; 
+			if(node.val > 9) {
+				if(node.next != null)
+					node.next.val ++; 
+				else {
+					toDo = new ListNode(1);
+					current.next = toDo; 
+				}
+			}
+			node = node.next; 
+		}
 	}
 	
 
