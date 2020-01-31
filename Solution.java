@@ -13,29 +13,31 @@ public class Solution {
 		ListNode current, head, toDo; 
 		boolean carryOver; 
 		
-		carryOver = false; 
 		head = new ListNode(0); 
 		current = head; 
 		
-		while (l1 != null || l2 != null || carryOver == true) {
+		while (l1 != null || l2 != null) {
+			arg3 = 0; 
 			
-			if (l1 == null || l2 == null) {
-				toDo = new ListNode(1); 
-				current.next = toDo; 
-				break; 
-			}
-			arg3 = l1.val + l2.val;
-			if (carryOver) {
-				arg3++;
-				carryOver = false; 
-			}
-			if(arg3 > 9){
-				carryOver = true; 
-				arg3 -= 10; 
-			}
-			toDo = new ListNode(arg3); 
+			if(l1 != null)
+				arg3 += l1.val;
+			if(l2 != null)
+				arg3 += l2.val; 
+			
+			toDo = new ListNode(arg3 % 10); 
 			current.next = toDo; 
 			current = toDo; 
+			
+			if (arg3 > 9) {
+				if (l1.next != null) {
+					l1.next.val++; 
+				}else if(l2.next != null) {
+					l2.next.val++; 
+				}else {
+					toDo = new ListNode(1);
+					current.next = toDo; 
+				}
+			}
 			l1 = l1.next; 
 			l2 = l2.next; 
 			
